@@ -29,8 +29,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   isStaff(): boolean {
-    // let account: Account = this.accountService.getAccount();
-    // return (account === null || account === undefined) ? false: account.role === ROLE_ADMIN;
-    return true;
+    let account: Account = this.accountService.getAccount();
+    return (account === null || account === undefined) ? false: account.role === ROLE_STAFF;
   }
 }

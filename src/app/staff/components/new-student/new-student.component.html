@@ -1,1 +1,36 @@
-<p>new-student works!</p>
+<div class="container">
+    <div class="wrapper">
+      <h2>{{title}}</h2>
+      <div class="feedback {{feedbackClass}}" [hidden]="!feedback">{{feedback}}</div>
+      <form [formGroup]="form" class="form">
+        <mat-form-field *ngIf="!isEdit">
+          <input matInput placeholder="Username" [formControl]="form.controls.username" >
+          <mat-error *ngIf="form.controls.username.invalid">
+            {{getErrorMessage(form.controls.username)}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Firstname" [formControl]="form.controls.firstname" >
+          <mat-error *ngIf="form.controls.firstname.invalid">
+            {{getErrorMessage(form.controls.firstname)}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Lastname" [formControl]="form.controls.lastname" >
+          <mat-error *ngIf="form.controls.lastname.invalid">
+            {{getErrorMessage(form.controls.lastname)}}
+          </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button mat-raised-button
+                  color="accent"
+                  (click)="go()"
+                  [disabled]="form.invalid || submitted" >
+            <img src="assets/svg/loading.svg" alt="..." [hidden]="!submitted">
+            <span>Go</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

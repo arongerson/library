@@ -1,0 +1,14 @@
+<div>
+    <mat-toolbar color="primary" class="example-toolbar">
+        <h1 class="example-app-name">Library</h1>
+        <span class="spacer"></span>
+        <button mat-button [matMenuTriggerFor]="accountMenu" aria-label="More menu">
+          {{account.username}}
+        </button>
+        <mat-menu #accountMenu="matMenu">
+          <button mat-menu-item (click)="changePassword()">Change password</button>
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</div>

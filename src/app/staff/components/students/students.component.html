@@ -1,1 +1,59 @@
-<p>students works!</p>
+<div class="container">
+    <div class="wrapper">
+        <h2>Students</h2>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item *ngFor="let account of accounts">
+              <div matLine>
+                <div class="title">
+                    <span class="title-span"> 
+                        {{account.student.firstname}} {{account.student.lastname}}
+                    </span>
+                    <span class="spacer"></span>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="More menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="editStudent(account.student.id)">
+                            <mat-icon>edit</mat-icon>
+                            <span>Edit</span>
+                        </button>
+                        <button 
+                            mat-menu-item 
+                            [disabled]="account.student.borrowedBooks.length > 0"
+                            (click)="deleteStudent(account.student.id)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                        <button mat-menu-item (click)="lendBook(account.student.id)">
+                            <mat-icon>book</mat-icon>
+                            <span>Lend book</span>
+                        </button>
+                    </mat-menu>
+                </div>
+                <p matLine class="username"> Username: <span class="highlight">{{account.username}}</span> </p>
+              </div>
+              <div  matLine *ngIf="account.student.borrowedBooks.length > 0">
+                <h4 class="mat-h4 mat-subheading-1">
+                    {{account.student.borrowedBooks.length}} Borrowed book(s)
+                </h4>
+                <mat-divider></mat-divider>
+                <div *ngFor="let copy of account.student.borrowedBooks" class="borrowed-item">
+                    <div>
+                        <p>{{copy.book.title}} by {{copy.book.author}}</p>
+                        <p>ISBN: {{copy.book.isbn}}</p>
+                        <p>
+                            <span>Copy #{{copy.copyNumber}} borrowed on 
+                                <span class="highlight">{{copy.lending.lendingDate | date}}</span> 
+                                <span class="highlight"> due on {{copy.lending.dueDate | date}}</span>
+                            </span>
+                        </p>
+                    </div>
+                    <span class="spacer"></span>
+                    <button mat-stroked-button (click)="returnBook(copy.lending.id)">Return</button>
+                </div>
+              </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

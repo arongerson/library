@@ -1,1 +1,69 @@
-<p>books works!</p>
+<div class="container">
+    <div class="wrapper">
+        <h2>Books</h2>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item *ngFor="let book of books">
+              <div matLine>
+                <div class="title">
+                    <span class="mat-h3 mat-subheading-2 title-span"> 
+                        {{book.title}} by <i>{{book.author}}</i>
+                    </span>
+                    <span class="spacer"></span>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="More menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="editBook(book.id)">
+                            <mat-icon>edit</mat-icon>
+                            <span>Edit</span>
+                        </button>
+                        <button 
+                            mat-menu-item 
+                            [disabled]="book.lentCopies.length > 0"
+                            (click)="deleteBook(book.id)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                        <button mat-menu-item (click)="addCopy(book.id)">
+                            <mat-icon>add</mat-icon>
+                            <span>Add copy</span>
+                        </button>
+                    </mat-menu>
+                </div>
+                <p matLine> ISBN: <span class="highlight">{{book.isbn}}</span> </p>
+                <p matLine> 
+                    Total copies: <span class="highlight">{{book.copies}}</span> 
+                </p>
+              </div>
+              <div matLine *ngIf="book.copiesAvailable.length > 0" class="book-copies">
+                <h4 class="mat-h4 mat-subheading-1">
+                    {{book.availableCopies}} Available copies
+                </h4>
+                <p *ngFor="let copy of book.copiesAvailable" class="copy">
+                    <span>Copy #{{copy.copyNumber}}</span>
+                    <mat-icon class="delete-icon" (click)="deleteCopy(copy.id)">remove_circle</mat-icon>
+                </p>
+              </div>
+              <p matLine *ngIf="book.copiesAvailable.length === 0">No available copies</p>
+              <div  matLine *ngIf="book.lentCopies.length > 0">
+                <h4 class="mat-h4 mat-subheading-1">
+                    {{book.lentCopies.length}} Borrowed copies
+                </h4>
+                <mat-divider></mat-divider>
+                <div *ngFor="let lending of book.lentCopies" class="borrowed-item">
+                    <span>
+                        Copy #{{lending.bookCopy.copyNumber}} borrowed on 
+                        <span class="highlight">{{lending.lendingDate | date}}</span> by 
+                        <span class="highlight">{{formatName(lending.student)}}</span> due on 
+                        <span class="highlight">{{lending.dueDate | date}}</span>
+                    </span>
+                    <span class="spacer"></span>
+                    <button mat-stroked-button (click)="returnBook(lending.id)">Return</button>
+                </div>
+              </div>
+              <p matLine *ngIf="book.lentCopies.length === 0">No copies borrowed</p>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

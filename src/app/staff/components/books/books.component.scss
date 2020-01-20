@@ -1,0 +1,87 @@
+.container {
+    margin: 0;
+
+    .wrapper {
+        margin: 0 auto;
+        max-width: 50rem;
+        padding: 1rem 2rem;
+    }
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-list-item {
+    border: dotted 1px #cccccc;
+    background-color: rgba(#eee, 0.2);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+
+    h4 {
+        border-bottom: solid 1px rgba(#000000, 0.6);
+    }
+
+    .highlight {
+        color: rgba(#000000, 0.6);
+    }
+}
+
+mat-list-item:hover {
+    background-color: rgba(#eee, 0.4);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title-span {
+    color: darkred;
+    margin: 0;
+}
+
+.borrowed-item {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0;
+    border-bottom: dashed 1px rgba(#000000, 0.5);
+}
+
+.borrowed-item:last-child {
+    border: 0;
+}
+
+.book-copies {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto !important;
+}
+
+.copy {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.3rem;
+    background-color: darkred;
+    border: solid 0px rgba(#000000, 0.6);
+    border-radius: 16px;
+    color: white;
+}
+
+.delete-icon {
+    padding: 0 0.4rem;
+}
+
+.delete-icon:hover {
+    color: #ccc;
+}
+
+::ng-deep .mat-line{
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+}
+
+::ng-deep  .mat-list .mat-list-item{
+    height:initial!important;
+}

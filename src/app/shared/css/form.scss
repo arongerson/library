@@ -1,0 +1,32 @@
+.container {
+    margin: 0 2rem;
+    .wrapper {
+        margin: 0 auto;
+        max-width: 50rem;
+
+        .form > * {
+            width: 100%;
+        }
+
+        .feedabck {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.button-row {
+    padding: 0rem 0;
+}
+
+.button-row button,
+.button-row a {
+    margin-right: 8px;
+}
+
+.error {
+    color: red;
+}
+  
+.ok {
+    color: green;
+}

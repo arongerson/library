@@ -1,0 +1,66 @@
+.container {
+    margin: 0 0.5rem;
+
+    .wrapper {
+        margin: 0.5rem auto;
+        max-width: 50rem;
+        padding: 1rem 2rem;
+        border: dotted 1px #cccccc;
+        margin-bottom: 0.5rem;
+        background-color: rgba(#eee, 0.2);
+        cursor: pointer;
+    }
+}
+
+h4 {
+    border-bottom: solid 1px rgba(#000000, 0.6);
+    margin-bottom: 0rem;
+}
+
+.highlight {
+    color: rgba(#000000, 0.6);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    margin-top: 0rem;
+}
+
+.title-span {
+    color: darkred;
+    margin: 0;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+}
+
+.borrowed-item {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0;
+    border-bottom: dashed 1px rgba(#000000, 0.5);
+}
+
+.borrowed-item:last-child {
+    border: 0;
+}
+
+.book-copies {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto !important;
+}
+
+.copy {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.3rem;
+    background-color: darkred;
+    border: solid 0px rgba(#000000, 0.6);
+    border-radius: 16px;
+    color: white;
+}

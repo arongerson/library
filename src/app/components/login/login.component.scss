@@ -1,0 +1,65 @@
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.body {
+  padding: 1rem;
+  flex: 1;
+}
+
+.body>div {
+  max-width: 500px;
+  margin: 1rem auto;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 2px 2px #ccc;
+  -moz-box-shadow: 1px 1px 2px 2px #ccc;
+  box-shadow: 1px 1px 2px 2px #ccc;
+  border-radius: 2px;
+}
+
+.title {
+  padding: 1rem;
+  text-align: center;
+  border-radius: 2px 2px 0 0;
+  border-bottom: solid 1px #ccc;
+  background-color: #eee;
+  line-height: 40px;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form > * {
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+.ok {
+  color: green;
+}
+
+.recovery span {
+  display: block;
+}
+
+.recovery span a {
+  display: inline-block;
+  padding: 0.5rem 0;
+  color: blue;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.recovery span a:hover {
+  text-decoration: underline;
+}

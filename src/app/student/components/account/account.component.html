@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="wrapper" *ngIf="account">
+        <span class="title-span"> 
+            {{account.student.firstname}} {{account.student.lastname}}
+        </span>
+        <p class="username"> Username: <span class="highlight">{{account.username}}</span> </p>
+        <div *ngIf="account.student.borrowedBooks.length > 0">
+            <h4 class="mat-h4 mat-subheading-1">
+                {{account.student.borrowedBooks.length}} Borrowed book(s)
+            </h4>
+            <mat-divider></mat-divider>
+            <div *ngFor="let copy of account.student.borrowedBooks" class="borrowed-item">
+                <div>
+                    <p>{{copy.book.title}} by {{copy.book.author}}</p>
+                    <p>ISBN: {{copy.book.isbn}}</p>
+                    <p>
+                        <span>Copy #{{copy.copyNumber}} borrowed on 
+                            <span class="highlight">{{copy.lending.lendingDate | date}}</span> 
+                            <span class="highlight"> due on {{copy.lending.dueDate | date}}</span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <p *ngIf="account.student.borrowedBooks.length === 0">No borrowed books</p>
+        </div>
+    </div>
+</div>

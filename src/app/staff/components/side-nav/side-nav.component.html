@@ -1,1 +1,43 @@
-<p>side-nav works!</p>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">Library</h1>
+      <span class="spacer"></span>
+      <button mat-button [matMenuTriggerFor]="accountMenu" aria-label="More menu">
+        {{account.username}}
+      </button>
+      <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item (click)="changePassword()">Change password</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+          <button mat-menu-item (click)="route('add-student')">
+            <mat-icon>person_add</mat-icon>
+            <span>Add student</span>
+          </button>
+          <button mat-menu-item (click)="route('add-book')">
+            <mat-icon>book</mat-icon>
+            <span>Add book</span>
+          </button>
+          <button mat-menu-item (click)="route('books')">
+            <mat-icon>library_books</mat-icon>
+            <span>Books</span>
+          </button>
+          <button mat-menu-item (click)="route('students')">
+            <mat-icon>people</mat-icon>
+            <span>Students</span>
+          </button>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
